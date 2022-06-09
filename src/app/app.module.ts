@@ -14,10 +14,11 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 import { PeopleEditComponent } from './people/people-edit/people-edit.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PeopleViewComponent } from './people/people-view/people-view.component';
 @NgModule({
   declarations: [
@@ -40,7 +41,10 @@ import { PeopleViewComponent } from './people/people-view/people-view.component'
     MatInputModule,
     MatFormFieldModule,
     MatCardModule,
-    
+    MatCheckboxModule,
+    MatButtonToggleModule,
+    ReactiveFormsModule,
+
     RouterModule.forRoot([
       {path: 'people', component: PeopleComponent},
       {path: '', redirectTo: '/people', pathMatch: 'full' },

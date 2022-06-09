@@ -8,25 +8,35 @@
     <div class="container col-md-8">
         <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Name</mat-label>
-        <input matInput type="text" id="name" class="form-control"  required >
+        <input matInput type="text" id="name" class="form-control"
+         maxlength="70"
+         [(ngModel)]="name" name="name" required >
         </mat-form-field>
     </div>
-    <!-- <div class="container col-md-8">
-        <label for="projectname">is Active:</label>
-        <input type="text" id="projectname" class="form-control" formControlName="projectname">
+    <div>
+        <mat-button-toggle-group [formControl]="genderControl" name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle value="Male">Male</mat-button-toggle>
+            <mat-button-toggle value="Female">Female</mat-button-toggle>
+          </mat-button-toggle-group>
+          <p>Chosen value is {{genderControl.value}}</p>
     </div>
     <div class="container col-md-8">
-        <label for="projectname">Age:</label>
-        <input type="text" id="projectname" class="form-control" formControlName="projectname">
+        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Age</mat-label>
+        <input matInput type="number" id="name" class="form-control"
+         max="110" min="0" required
+         [(ngModel)]="age" name="age" required >
+        </mat-form-field>
     </div>
     <div class="container col-md-8">
-        <label for="projectname">About:</label>
-        <input type="text" id="projectname" class="form-control" formControlName="projectname">
+        <mat-form-field class="" appearance="fill">
+        <mat-label>About</mat-label>
+        <textarea matInput type="text" id="name"
+        maxlength="250"
+         [(ngModel)]="about" name="about" ></textarea>
+        </mat-form-field>
     </div>
-    <div class="container col-md-8">
-        <label for="projectname">Gender:</label>
-        <input type="text" id="projectname" class="form-control" formControlName="projectname">
-    </div> -->
+
 </form>
 <br>
 <button mat-raised-button color="primary" (click)="saveData()">Save</button>

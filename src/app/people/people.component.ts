@@ -67,6 +67,12 @@ export class PeopleComponent implements OnInit,AfterViewInit {
         let record = data[i];
         console.log(record);
         this.mainService.sendPeopleDetails(record);
+        localStorage.setItem('name', record.name);
+        localStorage.setItem('isActive', record.isActive);
+        localStorage.setItem('Age', record.age);
+        localStorage.setItem('About', record.about);
+        localStorage.setItem('Gender', record.gender);
+        localStorage.setItem('id', record.id);
         this.router.navigateByUrl('people/' + record.id + '/edit');
       }
     }
