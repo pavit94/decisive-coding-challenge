@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { peopleData } from 'src/app/peopledata';
 import { MainService } from 'src/main.service';
@@ -18,6 +18,9 @@ export class PeopleEditComponent implements OnInit {
   gender = '';
   genderm : boolean = true;
   genderControl = new FormControl('');
+  activeControl = new FormControl('');
+  nameControl = new FormControl('',[Validators.maxLength(70),  Validators.required]);
+  ageControl = new FormControl('',[Validators.max(100), Validators.min(18), Validators.required]);
   constructor(private router: Router,
     private mainService : MainService) { }
 
@@ -32,14 +35,16 @@ export class PeopleEditComponent implements OnInit {
  } else {
   this.genderControl.setValue('Female');
  }
+ if(this.isactive === 'true') {
+   this.activeControl.setValue('Active');
+ } else {
+  this.activeControl.setValue('Disabled');
+ }
   }
   returnToList() : void {
     this.router.navigateByUrl('');
   }
   saveData() : void{
-
-  }
-  onSubmit() {
-    console.log('submit')
+    
   }
 }

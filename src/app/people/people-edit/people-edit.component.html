@@ -4,14 +4,36 @@
 <br><br>
 <hr>
 <h3>Person Details: </h3>
-<form (ngSubmit)="onSubmit()" #form="ngForm">
+<form #form="ngForm">
     <div class="container col-md-8">
         <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Name</mat-label>
         <input matInput type="text" id="name" class="form-control"
          maxlength="70"
-         [(ngModel)]="name" name="name" required >
+         [(ngModel)]="name" 
+         name="name" required 
+         [formControl]="nameControl">
         </mat-form-field>
+        <div *ngIf="!nameControl.valid">
+            <mat-error>Enter Valid Name Value</mat-error>
+        </div>
+    </div>
+    <div>
+        <mat-button-toggle-group [formControl]="activeControl" name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle value="Active">Active</mat-button-toggle>
+            <mat-button-toggle value="Disabled">Disabled</mat-button-toggle>
+          </mat-button-toggle-group>
+          <p>Chosen value is {{activeControl.value}}</p>
+    </div>
+    <div class="container col-md-8">
+        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Age</mat-label>
+        <input matInput type="number" id="name" class="form-control"
+         [(ngModel)]="age" name="age" required [formControl]="ageControl" >
+        </mat-form-field>
+        <div *ngIf="!ageControl.valid">
+            <mat-error>Enter Valid Age Value</mat-error>
+        </div>
     </div>
     <div>
         <mat-button-toggle-group [formControl]="genderControl" name="fontStyle" aria-label="Font Style">
@@ -19,14 +41,6 @@
             <mat-button-toggle value="Female">Female</mat-button-toggle>
           </mat-button-toggle-group>
           <p>Chosen value is {{genderControl.value}}</p>
-    </div>
-    <div class="container col-md-8">
-        <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Age</mat-label>
-        <input matInput type="number" id="name" class="form-control"
-         max="110" min="0" required
-         [(ngModel)]="age" name="age" required >
-        </mat-form-field>
     </div>
     <div class="container col-md-8">
         <mat-form-field class="" appearance="fill">
@@ -39,6 +53,6 @@
 
 </form>
 <br>
-<button mat-raised-button color="primary" (click)="saveData()">Save</button>
-    
+<button [disabled]="!nameControl.valid || !ageControl.valid" mat-raised-button color="primary" (click)="saveData()">Save</button>
+    <br>
 </div>
