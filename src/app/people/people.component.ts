@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import { MainService } from 'src/main.service';
 import { peopleData } from '../peopledata';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-people',
@@ -16,7 +17,8 @@ export class PeopleComponent implements OnInit,AfterViewInit {
   people : string = 'people';
   displayedColumns: string[] = ['name', 'registered', 'isActive','edit'];
   dataSource =  new MatTableDataSource<peopleData>(this.ELEMENT_DATA);
-  constructor(private mainService : MainService) {
+  constructor(private mainService : MainService,
+    private router: Router) {
    }
 
   ngOnInit(): void {
@@ -40,5 +42,17 @@ export class PeopleComponent implements OnInit,AfterViewInit {
   clearInput() {
     const filterValue= '';
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  editUser(name : string) {
+    const data = JSON.parse(JSON.stringify(this.dataSource.data));
+    for(let i =0; i < data.length; i++) {
+      if(data[i].name.toLowerCase() === name.toLowerCase()) {
+        let record = data[i];
+        console.log(record);
+        this.mainService.sendPeopleDetails(record);
+        this.router.navigateByUrl('people/' + record.id + '/edit');
+      }
+    }
+
   }
 }

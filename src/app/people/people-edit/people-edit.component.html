@@ -1,0 +1,34 @@
+<div class="align-comp">
+
+<button mat-raised-button color="primary" (click)="returnToList()">Back</button>
+<br><br>
+<hr>
+<h3>Person Details: </h3>
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+    <div class="container col-md-8">
+        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" id="name" class="form-control"  required >
+        </mat-form-field>
+    </div>
+    <!-- <div class="container col-md-8">
+        <label for="projectname">is Active:</label>
+        <input type="text" id="projectname" class="form-control" formControlName="projectname">
+    </div>
+    <div class="container col-md-8">
+        <label for="projectname">Age:</label>
+        <input type="text" id="projectname" class="form-control" formControlName="projectname">
+    </div>
+    <div class="container col-md-8">
+        <label for="projectname">About:</label>
+        <input type="text" id="projectname" class="form-control" formControlName="projectname">
+    </div>
+    <div class="container col-md-8">
+        <label for="projectname">Gender:</label>
+        <input type="text" id="projectname" class="form-control" formControlName="projectname">
+    </div> -->
+</form>
+<br>
+<button mat-raised-button color="primary" (click)="saveData()">Save</button>
+    
+</div>

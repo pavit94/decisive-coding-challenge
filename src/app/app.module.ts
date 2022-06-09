@@ -12,14 +12,19 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { PeopleEditComponent } from './people/people-edit/people-edit.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    PeopleComponent
+    PeopleComponent,
+    PeopleEditComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     //Material
     NoopAnimationsModule,
     MatSliderModule,
@@ -28,9 +33,12 @@ import {MatInputModule} from '@angular/material/input';
     MatIconModule,
     MatPaginatorModule,
     MatInputModule,
+    MatFormFieldModule,
+
     RouterModule.forRoot([
       {path: 'people', component: PeopleComponent},
-      {path: '', redirectTo: '/people', pathMatch: 'full'},
+      {path: '', redirectTo: '/people', pathMatch: 'full' },
+      {path: 'people/:id/edit', component: PeopleEditComponent, pathMatch: 'full'}
     ]),
   ],
   bootstrap: [
