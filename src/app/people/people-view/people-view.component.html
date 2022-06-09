@@ -1,0 +1,23 @@
+<div class="align-comp">
+    <button mat-raised-button color="primary" (click)="returnToList()">Back</button>
+    <br>
+    <br>
+    <br>
+    <div>
+        <mat-card>
+        <hr>
+        <b>Name :</b> {{name}} 
+        <br><br>
+        <b>Age :</b> {{age}}
+        <br><br>
+        <b>About :</b> 
+        <br>{{about}}
+        <br><br>
+        <b>isActive :</b> {{getStatus(isactive)}}
+        <br><br>
+        <b>Gender : </b>{{gender}}
+        <br>
+        <button [disabled]="status" style="float : right;" mat-raised-button color="warn" (click)="editPeople()"> Edit </button>
+    </mat-card>
+    </div>
+</div>
